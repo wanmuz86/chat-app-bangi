@@ -31,8 +31,6 @@ class _RegisterPageState extends State<RegisterPage> {
           FlatButton(
             child: Text("Register"),
             onPressed: () async {
-              print(emailController.text);
-              print(passwordController.text);
               FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
                       email: emailController.text.trim(),
                       password: passwordController.text))
