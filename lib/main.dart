@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
               if (user != null) {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ChatList()),
+                  MaterialPageRoute(builder: (context) => ChatList(userId: user.uid,)),
                 );
               }
               else {

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       password: passwordController.text))
                   .user;
               if (user != null) {
+                // Add new data inside the database
+                // The data will be stored inside users database
+                // That data is email, id, createdAt, chattimgWith
+                Firestore.instance.collection("users").document(user.uid).setData({
+                  'email':user.email,
+                  'id':user.uid,
+                  'createdAt':DateTime.now(),
+                  'chattingWith':null
+                });
                 print("Success");
               } else {
                 print("fail");
